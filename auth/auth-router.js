@@ -2,14 +2,12 @@ const router = require("express").Router()
 const users = require("../users/users-model")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
-const secret = require("../config/secret")
+const secret = require("../config/secrets")
 
-//findBy
-//add
 
 
     //TODO - Refactor to include login during register
-    router.post('/sign-up', async (req, res, next) => {
+    router.post('/signup', async (req, res, next) => {
         const {username, password } = req.body
 
         if(username && password) {
