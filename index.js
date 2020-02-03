@@ -7,7 +7,7 @@ const cors = require("cors")
 const morgan = require("morgan")
 
 //TODO Server Routes
-
+const authRouter = require("./auth/auth-router")
 
 
 // global middleware
@@ -18,6 +18,8 @@ server.use(morgan())
 
 
 //TODO Setup Routers
+
+server.use('/api/auth', authRouter)
 
 const PORT = process.env.PORT|| 3333
 
