@@ -29,14 +29,14 @@ const secret = require("../config/secrets")
     try {
         const {username, password} = req.body
 
-        const user = await users.findBy({username}.first())
+        const user = await users.findBy({username}).first()
         const passwordValid = await bcrypt.compare(password, user.password)
 
         if (user && passwordValid) {
             const token = generateToken(user)
 
 
-            res.status(200).json({token, message: `Welcome {user.username}`})
+            res.status(200).json({token, message: `Welcome ${user.username}`})
         } else {
             res.status(401).json({message: "Invalid credentials"})
         }
@@ -56,7 +56,7 @@ const secret = require("../config/secrets")
             expiresIn: '1d'
         }
 
-        return jwt.sign(payload, secret.jwtSecret.options)
+        return jwt.sign(payload, secret.jwtSecret, options)
     }
 
 })
