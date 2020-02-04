@@ -26,6 +26,7 @@ router.post("/signup", async (req, res, next) => {
             res.status(201).json({ token, message: `Welcome ${user.username}` })
             // res.status(201).json({message: `Welcome ${user.username}`})
         } catch (err) {
+            err.statusCode = 409
             next(err)
         }
     } else {
@@ -39,16 +40,16 @@ router.post("/login", async (req, res, next) => {
 
         const user = await users.findBy({ username }).first()
         const passwordValid = await bcrypt.compare(password, user.password)
-
-        if (user && passwordValid) {
-            const token = generateToken(user)
-
-            res.status(200).json({ token, message: `Welcome ${user.username}` })
-        } else {
-            res.status(401).json({ message: "Invalid credentials" })
+        if (!user || !passwordValid) {
+            const error = new Error("Invalid credentials")
+            error.statusCode = 401
+            throw error
         }
+        const token = generateToken(user)
+
+        res.status(200).json({ token, message: `Welcome ${user.username}` })
     } catch (err) {
-        next()
+        next(err)
     }
 })
 
