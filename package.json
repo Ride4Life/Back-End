@@ -1,36 +1,40 @@
 {
-  "name": "Back-End",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "server": "nodemon index.js",
-    "start": "node index.js",
-    "test": "cross-env NODE_ENV=test jest --verbose --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ride4Life/Back-End.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ride4Life/Back-End/issues"
-  },
-  "homepage": "https://github.com/Ride4Life/Back-End#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "cross-env": "^7.0.0",
-    "express": "^4.17.1",
-    "helmet": "^3.21.2",
-    "jest": "^25.1.0",
-    "jsonwebtoken": "^8.5.1",
-    "knex": "^0.20.8",
-    "morgan": "^1.9.1",
-    "nodemon": "^2.0.2",
-    "sqlite3": "^4.1.1",
-    "supertest": "^4.0.2"
-  }
+    "name": "Back-End",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "server": "nodemon index.js",
+        "start": "node index.js",
+        "test": "cross-env NODE_ENV=test jest --verbose --watch",
+        "format": "prettier --write \"**/*.{js,json,md}\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ride4Life/Back-End.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Ride4Life/Back-End/issues"
+    },
+    "homepage": "https://github.com/Ride4Life/Back-End#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
+        "cross-env": "^7.0.0",
+        "express": "^4.17.1",
+        "helmet": "^3.21.2",
+        "jest": "^25.1.0",
+        "jsonwebtoken": "^8.5.1",
+        "knex": "^0.20.8",
+        "morgan": "^1.9.1",
+        "nodemon": "^2.0.2",
+        "sqlite3": "^4.1.1",
+        "supertest": "^4.0.2"
+    },
+    "devDependencies": {
+        "prettier": "^1.19.1"
+    }
 }
