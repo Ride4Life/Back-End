@@ -25,6 +25,18 @@ server.get("/", (req, res) => {
     res.send("Need a Ride?")
 })
 
+server.use((err, req, res, next) => {
+    if (err) {
+        return res.json({
+            message:
+                err.message ||
+                "oh no some awful happened and theres no message",
+            statusCode: err.statusCode || 500
+        })
+    }
+    next()
+})
+
 server.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })
