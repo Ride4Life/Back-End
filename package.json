@@ -7,7 +7,8 @@
         "server": "nodemon index.js",
         "start": "node index.js",
         "test": "cross-env NODE_ENV=test jest --verbose --watch",
-        "format": "prettier --write \"**/*.{js,json,md}\""
+        "format": "prettier --write \"**/*.{js,json,md}\"",
+        "knex-migrate-latest": "knex migrate:latest"
     },
     "repository": {
         "type": "git",
