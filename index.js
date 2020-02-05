@@ -6,8 +6,13 @@ const helmet = require("helmet")
 const cors = require("cors")
 const morgan = require("morgan")
 
+//Env Variables
+const dotenv = require("dotenv")
+dotenv.config()
+
 //TODO Server Routes
 const authRouter = require("./auth/auth-router")
+const rideRouter = require("./rides/rides-router")
 
 // global middleware
 server.use(express.json())
@@ -18,6 +23,7 @@ server.use(morgan())
 //TODO Setup Routers
 
 server.use("/api/auth", authRouter)
+server.use("/api/ride", rideRouter)
 
 const PORT = process.env.PORT || 3333
 
