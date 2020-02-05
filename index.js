@@ -26,12 +26,12 @@ server.get("/", (req, res) => {
 })
 
 server.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500
+
     if (err) {
-        return res.json({
+        return res.status(statusCode).json({
             message:
-                err.message ||
-                "oh no some awful happened and theres no message",
-            statusCode: err.statusCode || 500
+                err.message || "oh no some awful happened and theres no message"
         })
     }
     next()
