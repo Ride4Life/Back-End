@@ -29,7 +29,7 @@ router.post("/request", async (req, res, next) => {
 
         //Determine ETA for driver
         const fetch = require("node-fetch")
-        const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=New+York+City,NY&key=AIzaSyCgK-FlujojQfhllnl0aYHab-avJdM7XUA`
+        const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=New+York+City,NY&key=${process.env.GOOGLE_API_KEY}`
 
         const response = await fetch(url)
         console.log(response)
