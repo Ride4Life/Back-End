@@ -90,3 +90,44 @@ URL: /api/auth/login
 **500 (Internal Server Error)**
 
 > If there was a server error logging the user in, a response with status code 500 will be returned.
+
+## Request a Ride
+
+HTTP Method: POST
+URL: /api/ride/request
+
+### Body
+
+| Name      | Type   | Required | Description              |
+| --------- | ------ | -------- | ------------------------ |
+| username  | String | Yes      | User's username          |
+| latitude  | String | Yes      | User's current latitude  |
+| longitude | String | Yes      | User's current longitude |
+
+### Example
+
+```json
+{
+    "username": "JohnD",
+    "latitude": "8.2414",
+    "longitude": "1.3231"
+}
+```
+
+### Response
+
+**200 (OK)**
+
+> If successfully logged in, endpoint will return HTTP response with status code and a body with the ETA until the driver return
+
+{
+"ETA": "3 hours 53 mins"
+}
+
+**401 (Unauthorized)**
+
+> If username is not found or password is incorrect, status 401 will be returned
+
+**500 (Internal Server Error)**
+
+> If there was a server error logging the user in, a response with status code 500 will be returned.
