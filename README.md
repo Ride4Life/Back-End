@@ -25,7 +25,7 @@ URL: /api/auth/signup
 | password     | String  | Yes      | User's chosen password |
 | isDriver     | Boolean | Yes      | If user is a driver    |
 | phone_number | String  | Yes      | User's phone number    |
-| price        | Integer | Yes      | User's price           |
+| price        | Integer | No       | User's price           |
 
 ### Example
 
@@ -135,7 +135,7 @@ URL: /api/ride/request
 
 > If there was a server error, a response with status code 500 will be returned.
 
-## Request a User
+## Request a Users Details
 
 HTTP Method: Get
 URL: /api/profile/:userid
@@ -173,6 +173,88 @@ Would return
 **200 (OK)**
 
 > Endpoint will return HTTP response with status code and a body with the users information
+
+**404 (Does Not Exist)**
+
+> If userid is not found , status 404 will be returned
+
+**500 (Internal Server Error)**
+
+> If there was a server error, a response with status code 500 will be returned.
+
+## Update a User
+
+HTTP Method: Put
+URL: /api/profile/:userid
+
+### Body
+
+| Name         | Type    | Required | Description            |
+| ------------ | ------- | -------- | ---------------------- |
+| first_name   | String  | No       | User's first name      |
+| last_name    | String  | No       | User's last name       |
+| email        | String  | No       | User's email           |
+| username     | String  | No       | User's chosen username |
+| password     | String  | No       | User's chosen password |
+| isDriver     | Boolean | No       | If user is a driver    |
+| phone_number | String  | No       | User's phone number    |
+| price        | Integer | No       | User's price           |
+
+### URL
+
+/api/profile/:userid (userid should be the users id that should be retrieved)
+
+### Example
+
+```json
+{
+    "first_name": "Stevenva",
+    "last_name": "Vandenburgva",
+    "email": "smvav5047@gmail.com",
+    "username": "test3",
+    "password": "test3",
+    "isDriver": "false",
+    "phone_number": "2156662381",
+    "price": 2000
+}
+```
+
+### Response
+
+**200 (OK)**
+
+> Endpoint will return HTTP response with status code and a body with the updated users information
+
+**404 (Does Not Exist)**
+
+> If userid is not found , status 404 will be returned
+
+**500 (Internal Server Error)**
+
+> If there was a server error, a response with status code 500 will be returned.
+
+## Delete a User
+
+HTTP Method: Delete
+URL: /api/profile/:userid
+
+### Body
+
+N/A
+
+### URL
+
+/api/profile/:userid (userid should be the users id that should be retrieved)
+
+### Example
+
+N/A
+
+### Response
+
+**200 (OK)**
+
+> Endpoint will return HTTP response with status code and a message saying user was deleted
 
 **404 (Does Not Exist)**
 

@@ -27,7 +27,7 @@ server.use("/api/auth", authRouter)
 server.use("/api/ride", rideRouter)
 server.use("/api/profile", userRouter)
 
-const PORT = process.env.PORT || 3333
+const PORT = process.env.PORT
 
 server.get("/", (req, res) => {
     res.send("Need a Ride?")
