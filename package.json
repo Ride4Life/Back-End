@@ -8,7 +8,8 @@
         "start": "node index.js",
         "test": "cross-env NODE_ENV=test jest --verbose --watch",
         "format": "prettier --write \"**/*.{js,json,md}\"",
-        "knex-migrate-latest": "knex migrate:latest"
+        "knex-migrate-latest": "knex migrate:latest",
+        "knex-migrate-rollback": "knex migrate:rollback"
     },
     "repository": {
         "type": "git",

@@ -52,13 +52,14 @@ router.post("/request", async (req, res, next) => {
 
         //send to FE ETA of driver
         res.status(200).json({
-            ETA: driverETA
+            ETA: driverETA,
+            username: driver.username
         })
         //Send email to rider within 24 hours for review
         //TODO add link to driver's profile to review
 
         const emailDelay = 86400000 //24 hours
-        const testDelau = 120000 // 2 minutes
+        const testDelay = 120000 // 2 minutes
 
         sgMail.setApiKey(process.env.SENDGRID_API_KEY)
         const msg = {

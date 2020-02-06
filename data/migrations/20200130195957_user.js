@@ -20,7 +20,7 @@ exports.up = async function(knex) {
             .string("phone_number")
             .notNullable()
             .unique()
-        table.integer("price").notNullable()
+        table.integer("price")
     })
 
     await knex.schema.createTable("rides", table => {
