@@ -13,6 +13,7 @@ dotenv.config()
 //TODO Server Routes
 const authRouter = require("./auth/auth-router")
 const rideRouter = require("./rides/rides-router")
+const userRouter = require("./users/users-router")
 
 // global middleware
 server.use(express.json())
@@ -24,6 +25,7 @@ server.use(morgan())
 
 server.use("/api/auth", authRouter)
 server.use("/api/ride", rideRouter)
+server.use("/api/profile", userRouter)
 
 const PORT = process.env.PORT || 3333
 

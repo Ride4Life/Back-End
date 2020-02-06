@@ -53,7 +53,8 @@ router.post("/request", async (req, res, next) => {
         //send to FE ETA of driver
         res.status(200).json({
             ETA: driverETA,
-            username: driver.username
+            username: driver.username,
+            userID: driver.id
         })
         //Send email to rider within 24 hours for review
         //TODO add link to driver's profile to review
