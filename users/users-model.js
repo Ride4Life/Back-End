@@ -25,9 +25,24 @@ function findBy(filter) {
         .first()
 }
 
+function remove(id) {
+    return db("users")
+        .where({ id })
+        .delete()
+}
+
+async function update(change, id) {
+    await db("users")
+        .where({ id })
+        .update(change)
+    return findById(id)
+}
+
 module.exports = {
     find,
     add,
     findById,
-    findBy
+    findBy,
+    remove,
+    update
 }
