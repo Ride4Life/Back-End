@@ -129,8 +129,55 @@ URL: /api/ride/request
 
 **401 (Unauthorized)**
 
-> If username is not found or password is incorrect, status 401 will be returned
+> If user is not authorized to request a ride, status 401 will be returned
 
 **500 (Internal Server Error)**
 
-> If there was a server error logging the user in, a response with status code 500 will be returned.
+> If there was a server error, a response with status code 500 will be returned.
+
+## Request a User
+
+HTTP Method: Get
+URL: /api/profile/:userid
+
+### Body
+
+N/A
+
+### URL
+
+/api/profile/:userid (userid should be the users id that should be retrieved)
+
+### Example
+
+/api/profile/1
+
+Would return
+
+```json
+{
+    "id": 1,
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "John.Doe@gmail.com",
+    "username": "JohnD",
+    "password": "$2a$13$9c5WA9NqPpQeyzgLbvvXO.XvC3mWJ8P24fFedJbnPMFJdhesQahU2",
+    "isDriver": "false",
+    "phone_number": "4042262159",
+    "price": null
+}
+```
+
+### Response
+
+**200 (OK)**
+
+> Endpoint will return HTTP response with status code and a body with the users information
+
+**404 (Does Not Exist)**
+
+> If userid is not found , status 404 will be returned
+
+**500 (Internal Server Error)**
+
+> If there was a server error, a response with status code 500 will be returned.
