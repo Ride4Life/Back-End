@@ -1,1 +1,1 @@
-web: npm run knex-migrate-latest && npm start
+web: npm run knex-migrate-rollback && npm run knex-migrate-latest && npm start
