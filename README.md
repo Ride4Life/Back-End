@@ -120,9 +120,12 @@ URL: /api/ride/request
 
 > If successfully logged in, endpoint will return HTTP response with status code and a body with the ETA until the driver return
 
+```json
 {
-"ETA": "3 hours 53 mins"
+"ETA": "3 hours 53 mins",
+"username": "test
 }
+```
 
 **401 (Unauthorized)**
 
