@@ -10,10 +10,11 @@ const morgan = require("morgan")
 const dotenv = require("dotenv")
 dotenv.config()
 
-//TODO Server Routes
+//Import Server Routes
 const authRouter = require("./auth/auth-router")
 const rideRouter = require("./rides/rides-router")
 const userRouter = require("./users/users-router")
+const reviewRouter = require("./reviews/reviews-router")
 
 // global middleware
 server.use(express.json())
@@ -21,11 +22,12 @@ server.use(helmet())
 server.use(cors())
 server.use(morgan())
 
-//TODO Setup Routers
+//Setup Routers
 
 server.use("/api/auth", authRouter)
 server.use("/api/ride", rideRouter)
 server.use("/api/profile", userRouter)
+server.use("/api/profile", reviewRouter)
 
 const PORT = process.env.PORT
 
@@ -48,3 +50,5 @@ server.use((err, req, res, next) => {
 server.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })
+
+module.exports = server

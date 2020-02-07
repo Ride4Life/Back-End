@@ -81,7 +81,7 @@ URL: /api/auth/login
 
 **200 (OK)**
 
-> If successfully logged in, endpoint will return HTTP response with status code and a body with a token and message welcoming the user by their first_name
+> If successfully logged in, endpoint will return HTTP response with status code and a body with a token and message welcoming the user by their first_name, as well as a userID
 
 **401 (Unauthorized)**
 

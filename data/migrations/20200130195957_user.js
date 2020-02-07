@@ -52,6 +52,12 @@ exports.up = async function(knex) {
             .inTable("users")
             .onDelete("NO ACTION")
             .onUpdate("NO ACTION")
+        table
+            .integer("driver_id")
+            .references("id")
+            .inTable("users")
+            .onDelete("NO ACTION")
+            .onUpdate("NO ACTION")
         table.string("review")
         table.integer("rating")
     })
