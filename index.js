@@ -5,6 +5,7 @@ const server = express()
 const helmet = require("helmet")
 const cors = require("cors")
 const morgan = require("morgan")
+const authenticate = require("./middleware/auth-middleware")
 
 //Env Variables
 const dotenv = require("dotenv")
@@ -25,9 +26,9 @@ server.use(morgan())
 //Setup Routers
 
 server.use("/api/auth", authRouter)
-server.use("/api/ride", rideRouter)
-server.use("/api/profile", userRouter)
-server.use("/api/profile", reviewRouter)
+server.use("/api/ride", authenticate, rideRouter)
+server.use("/api/profile", authenticate, userRouter)
+server.use("/api/profile", authenticate, reviewRouter)
 
 const PORT = process.env.PORT
 

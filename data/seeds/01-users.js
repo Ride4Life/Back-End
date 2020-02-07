@@ -12,8 +12,7 @@ exports.seed = async function(knex) {
             username: "john",
             password: `${await hash("password")}`,
             isDriver: false,
-            phone_number: "2155551111",
-            price: 255
+            phone_number: "2155551111"
         },
 
         {
@@ -26,6 +25,28 @@ exports.seed = async function(knex) {
             isDriver: true,
             phone_number: "2155552222",
             price: 255
+        },
+        {
+            id: 3,
+            first_name: "Johnny",
+            last_name: "Dont",
+            email: "johnd@gmail.com",
+            username: "johnd",
+            password: `${await hash("password")}`,
+            isDriver: false,
+            phone_number: "2155531111"
+        },
+
+        {
+            id: 4,
+            first_name: "Janet",
+            last_name: "Donty",
+            email: "janet@gmail.com",
+            username: "janet",
+            password: `${await hash("wordpass")}`,
+            isDriver: true,
+            phone_number: "2155252322",
+            price: 211
         }
     ])
 }
