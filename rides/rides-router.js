@@ -19,7 +19,7 @@ router.post("/request", async (req, res, next) => {
         //Recieve user location - Work with FE
         const { username, latitude, longitude } = req.body
         const rider = await users.findBy({ username }).first()
-
+        console.log(rider, "rider log")
         const riderLatitude = latitude
         const riderLongitude = longitude
         //TODO Receive drivers locations
@@ -39,8 +39,9 @@ router.post("/request", async (req, res, next) => {
 
         //send text to driver w/ location of requestor TWILIO
         const driverUsername = "test"
-        const driver = await users.findById(1)
-        console.log(driver)
+        const driver = await users.findById(6)
+
+        console.log(driver, "driver log")
         const driverETA = json.rows[0].elements[0].duration.text
         client.messages
             .create({
