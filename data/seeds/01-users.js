@@ -29,7 +29,7 @@ exports.seed = async function(knex) {
         {
             id: 3,
             first_name: "Johnny",
-            last_name: "Dont",
+            last_name: "Donttt",
             email: "johnd@gmail.com",
             username: "johnd",
             password: `${await hash("password")}`,
