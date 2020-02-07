@@ -21,17 +21,6 @@ router.get("/:id", (req, res, next) => {
 })
 
 router.put("/:id", async (req, res, next) => {
-    // try {
-    //     const { id } = req.params
-    //     const changes = req.body
-    //     if (users.findById(id) != {}) {
-    //         const updatedUser = await users.update(changes, id)
-    //         res.status(200).json({ updatedUser })
-    //     } else {
-    //         res.status(404).json({
-    //             message: "Could not find user with given id."
-    //         })
-    //     }
     const { id } = req.params
     const changes = req.body
     users
