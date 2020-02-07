@@ -38,34 +38,28 @@ router.post("/:id/reviews", async (req, res, next) => {
     }
 })
 
-// router.put("/:userid/reviews/:reviewid", async (req, res, next) => {
-//     const { id } = req.params
-//     const changes = req.body
-//     users
-//         .findById(id)
-//         .then(user => {
-//             if (user) {
-//                 users.update(changes, id).then(updatedUser => {
-//                     res.status(200).json({ updatedUser })
-//                 })
-//             } else {
-//                 res.status(404).json({
-//                     message: "Could not find user with given id."
-//                 })
-//             }
-//         })
-//         .catch(err => {
-//             next(err)
-//         })
-// })
+router.put("/:id/reviews/:reviewid", async (req, res, next) => {
+    const id = req.params.reviewid
+    const changes = req.body
 
-// router.delete("/:userid/reviews/:reviewid", (req, res) => {
-//     const id = req.params.id
-//     // or we could destructure it like so: const { id } = req.params;
-//     res.status(200).json({
-//         url: `/hobbits/${id}`,
-//         operation: `DELETE for hobbit with id ${id}`
-//     })
-// })
+    try {
+        const updatedReview = reviews.update(changes, id)
+        res.status(204).json({ message: `Update successful` })
+    } catch (err) {
+        next(err)
+    }
+})
+
+router.delete("/:id/reviews/:reviewid", async (req, res, next) => {
+    const reviewid = req.params.reviewid
+
+    try {
+        const removedReview = await reviews.remove(reviewid)
+
+        res.status(200).json({ removedReview })
+    } catch (err) {
+        next(err)
+    }
+})
 
 module.exports = router
