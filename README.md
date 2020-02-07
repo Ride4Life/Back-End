@@ -263,3 +263,109 @@ N/A
 **500 (Internal Server Error)**
 
 > If there was a server error, a response with status code 500 will be returned.
+
+## View a Drivers Reviews
+
+HTTP Method: Get
+URL: /api/profile/:userid/review
+
+### Body
+
+N/A
+
+### URL
+
+/api/profile/:userid (userid should be the users id that should be retrieved)
+
+### Example Response
+
+If we look at the reviews
+
+```json
+[
+    {
+        "id": 1,
+        "rider_id": 2,
+        "driver_id": 7,
+        "review": "The Worst",
+        "rating": 1
+    },
+    {
+        "id": 2,
+        "rider_id": 3,
+        "driver_id": 7,
+        "review": "Meh",
+        "rating": 3
+    },
+    {
+        "id": 3,
+        "rider_id": 4,
+        "driver_id": 7,
+        "review": "So Enlightening",
+        "rating": 4
+    },
+    {
+        "id": 4,
+        "rider_id": 6,
+        "driver_id": 7,
+        "review": " Best Ride ever",
+        "rating": 5
+    }
+]
+```
+
+### Response
+
+**200 (OK)**
+
+> Endpoint will return HTTP response with status code and an array of review objects
+
+**404 (Does Not Exist)**
+
+> If driverid is not found , status 404 will be returned
+
+**500 (Internal Server Error)**
+
+> If there was a server error, a response with status code 500 will be returned.
+
+## Create a Review
+
+HTTP Method: POST
+
+URL: /api/profile/:driverid/reviews
+
+### Body
+
+| Name     | Type    | Required | Description     |
+| -------- | ------- | -------- | --------------- |
+| rider_id | Integer | Yes      | Rider's id      |
+| review   | String  | No       | Review for Ride |
+| rating   | Integer | Yes      | Rating for Ride |
+
+### URL
+
+Must send Driver ID through URL /api/profile/:driverid/reviews
+
+### Example
+
+```json
+{
+    "rider_id": 6,
+    "review": " Best Ride ever",
+    "rating": 4
+}
+```
+
+### Response
+
+**201 (Created)**
+
+> If successfully create, endpoint will return HTTP response with status code and a message thanking user for review
+
+**401 (Bad Request)**
+
+> If required information is missing, the endpoint will return an HTTP response with a status code of 401
+
+**500 (Internal Server Error)**
+
+> If there was a server error registering the user, a response with status code 500 will be returned.
