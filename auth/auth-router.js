@@ -19,6 +19,7 @@ function generateToken(user) {
 router.post("/signup", async (req, res, next) => {
     const { username, password } = req.body
 
+    //include validation for unique username
     if (username && password) {
         try {
             const user = await users.add(req.body)

@@ -31,13 +31,13 @@ function findByDriverId(id) {
 
 function remove(id) {
     return db("reviews")
-        .where({ id })
+        .where({ id: id })
         .delete()
 }
 
 async function update(change, id) {
     await db("reviews")
-        .where({ id })
+        .where({ id: id })
         .update(change)
     return findById(id)
 }

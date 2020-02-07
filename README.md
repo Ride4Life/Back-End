@@ -2,7 +2,7 @@
 
 Backend Express Server & SQLite DB for Ride4Life App
 
-# Lambda School Sleep Tracker API
+# Lambda School Ride4Life
 
 ## Base URL
 
@@ -361,6 +361,80 @@ Must send Driver ID through URL /api/profile/:driverid/reviews
 **201 (Created)**
 
 > If successfully create, endpoint will return HTTP response with status code and a message thanking user for review
+
+**401 (Bad Request)**
+
+> If required information is missing, the endpoint will return an HTTP response with a status code of 401
+
+**500 (Internal Server Error)**
+
+> If there was a server error registering the user, a response with status code 500 will be returned.
+
+## Delete a Review
+
+HTTP Method: DELETE
+
+URL: /api/profile/:driverid/reviews/:reviewid
+
+### Body
+
+N/A
+
+### URL
+
+Must send Driver ID through URL /api/profile/:driverid/reviews/:reviewid
+
+### Example URL
+
+https://ride-4-life.herokuapp.com/api/profile/7/reviews/4
+
+### Response
+
+**200 (Deleted)**
+
+> If review exists, endpoint will return HTTP response with status code and a message notifying user that review was deleted
+
+**401 (Bad Request)**
+
+> If required information is missing, the endpoint will return an HTTP response with a status code of 401
+
+**500 (Internal Server Error)**
+
+> If there was a server error registering the user, a response with status code 500 will be returned.
+
+## Update a Review
+
+HTTP Method: PUT
+
+URL: /api/profile/:driverid/reviews/:reviewid
+
+### Body
+
+| Name     | Type    | Required | Description     |
+| -------- | ------- | -------- | --------------- |
+| rider_id | Integer | Yes      | Rider's id      |
+| review   | String  | No       | Review for Ride |
+| rating   | Integer | Yes      | Rating for Ride |
+
+### URL
+
+Must send Driver ID through URL https://ride-4-life.herokuapp.com/api/profile/7/reviews/4
+
+### Example
+
+```json
+{
+    "rider_id": 6,
+    "review": " Best Ride ever",
+    "rating": 4
+}
+```
+
+### Response
+
+**204 (Updated)**
+
+> If successfully updated, endpoint will return HTTP response with status code and a message notifying user that review was updated
 
 **401 (Bad Request)**
 
