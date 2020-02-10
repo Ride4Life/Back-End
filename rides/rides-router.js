@@ -39,7 +39,7 @@ router.post("/request", async (req, res, next) => {
 
         //send text to driver w/ location of requestor TWILIO
         const driverUsername = "test"
-        const driver = await users.findById(6)
+        const driver = await users.findById(11)
 
         console.log(driver, "driver log")
         const driverETA = json.rows[0].elements[0].duration.text
@@ -68,10 +68,10 @@ router.post("/request", async (req, res, next) => {
             to: "smv5047@gmail.com",
             from: "Ride4Life@gmail.com",
             subject: "Please Review Your Ride4Life - test4",
-            text: `Please review your ride with ${driver.first_name} ${driver.last_name}`
+            text: `Please review your ride with ${driver.first_name} ${driver.last_name} at https://ride-4-life.herokuapp.com/profile/${driver.id}`
             // html: "<strong>and easy to do anywhere, even with Node.js</strong>"
         }
-        setTimeout(() => sgMail.send(msg), emailDelay)
+        setTimeout(() => sgMail.send(msg), testDelay)
     } catch (err) {
         next(err)
     }
