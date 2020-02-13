@@ -22,10 +22,10 @@ router.post("/request", async (req, res, next) => {
         console.log(rider, "rider log")
         const riderLatitude = latitude
         const riderLongitude = longitude
-        //TODO Receive drivers locations
+        //TODO Receive drivers locations - Use google distance matrix
         const driverLatitude = "7.9465"
         const driverLongitude = "1.0232"
-        //TODO determine closet driver
+        //TODO Determine closet driver - Sort?
 
         //Determine ETA for driver
         const fetch = require("node-fetch")
@@ -57,8 +57,8 @@ router.post("/request", async (req, res, next) => {
             username: driver.username,
             userID: driver.id
         })
-        //Send email to rider within 24 hours for review
-        //TODO add link to driver's profile to review
+        //Send email to rider within 24 hours for review with link to Driver's profile
+        //TODO Secure link so that only the rider who recieves the link can review the driver
 
         const emailDelay = 86400000 //24 hours
         const testDelay = 120000 // 2 minutes
@@ -68,7 +68,7 @@ router.post("/request", async (req, res, next) => {
             to: "smv5047@gmail.com",
             from: "Ride4Life@gmail.com",
             subject: "Please Review Your Ride4Life - test4",
-            text: `Please review your ride with ${driver.first_name} ${driver.last_name} at https://ride-4-life.herokuapp.com/profile/${driver.id}`
+            text: `Please review your ride with ${driver.first_name} ${driver.last_name} at https://ride4life.herokuapp.com/profile/${driver.id}`
             // html: "<strong>and easy to do anywhere, even with Node.js</strong>"
         }
         setTimeout(() => sgMail.send(msg), testDelay)
