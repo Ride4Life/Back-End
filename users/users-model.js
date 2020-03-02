@@ -15,7 +15,7 @@ async function add(user) {
     user.password = await bcrypt.hash(user.password, 13)
     const [id] = await db("users").insert(user)
 
-    return findById(id)
+    return findById(id).returning("*")
 }
 
 function findBy(filter) {
@@ -35,7 +35,8 @@ async function update(change, id) {
     await db("users")
         .where({ id })
         .update(change)
-    return findById(id)
+
+    return findById(id).returning("*")
 }
 
 module.exports = {
