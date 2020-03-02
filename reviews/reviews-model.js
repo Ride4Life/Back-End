@@ -13,7 +13,7 @@ function findById(id) {
 async function add(review) {
     const [id] = await db("reviews").insert(review)
 
-    return findById(id)
+    return findById(id).returning("*")
 }
 
 function findBy(filter) {
@@ -39,7 +39,8 @@ async function update(change, id) {
     await db("reviews")
         .where({ id: id })
         .update(change)
-    return findById(id)
+
+    return findById(id).returning("*")
 }
 
 module.exports = {
