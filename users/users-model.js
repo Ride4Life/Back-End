@@ -31,12 +31,11 @@ function remove(id) {
         .delete()
 }
 
-async function update(change, id) {
-    await db("users")
+function update(change, id) {
+    return db("users")
         .where({ id })
         .update(change)
-
-    return findById(id).returning("*")
+        .returning("*")
 }
 
 module.exports = {
