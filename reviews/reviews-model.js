@@ -10,10 +10,10 @@ function findById(id) {
         .first()
 }
 
-async function add(review) {
-    const [id] = await db("reviews").insert(review)
-
-    return findById(id).returning("*")
+function add(review) {
+    return db("reviews")
+        .insert(review)
+        .returning("*")
 }
 
 function findBy(filter) {
@@ -35,12 +35,11 @@ function remove(id) {
         .delete()
 }
 
-async function update(change, id) {
-    await db("reviews")
+function update(change, id) {
+    return db("reviews")
         .where({ id: id })
         .update(change)
-
-    return findById(id).returning("*")
+        .returning("*")
 }
 
 module.exports = {
