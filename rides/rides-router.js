@@ -39,7 +39,7 @@ router.post("/request", async (req, res, next) => {
 
         //send text to driver w/ location of requestor TWILIO
         const driverUsername = "test"
-        const driver = await users.findById(11)
+        const driver = await users.findById(1)
 
         console.log(driver, "driver log")
         const driverETA = json.rows[0].elements[0].duration.text
